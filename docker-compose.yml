@@ -1,0 +1,25 @@
+version: "3.9"
+# compose file for nginx
+services:
+  nginx_main:
+    image: nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/nginx.conf:ro" # <- configuration for nginx
+  app1:
+    build: .
+    restart: always
+    ports:
+      - "8081:3000"
+  app2:
+    build: .
+    restart: always
+    ports:
+      - "8082:3000"
+  app3:
+    build: .
+    restart: always
+    ports:
+      - "8083:3000"
